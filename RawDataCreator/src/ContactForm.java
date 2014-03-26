@@ -165,10 +165,6 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
 
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
-
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JButton o = (JButton) e.getSource();
@@ -178,18 +174,22 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
 
             switch(label) {
                 case "CleanForm":
+                    ownerIdTextField.setSelectedIndex(-1);
                     dateOfCreationTextField.setText("");
                     firstNameTextField.setText("");
                     lastNameTextField.setText("");
                     titleComboBox.setSelectedIndex(-1);
-                    ownerIdTextField.setText("");
+                    ownerIdTextField.setSelectedIndex(-1);
                     emailTextField.setText("");
                     phoneTextField.setText("");
                     accountIDTextField.setText("");
                     eventTSTextField.setText("2011-07-11 11:00:00.000");
+                    createdByIdComboBox.setSelectedIndex(-1);
+                    lastModifiedDateTextField.setText("");
+                    lastModifiedByIdlComboBox.setSelectedIndex(-1);
                     break;
                 case "Create":
-                    createdContacts.add(new Contact(ownerIdTextField.getText(),
+                    createdContacts.add(new Contact(ownerIdTextField.getSelectedItem().toString(),
                                                     accountIDTextField.getText(),
                                                     dateOfCreationTextField.getText(),
                                                     firstNameTextField.getText(),
@@ -197,7 +197,10 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
                                                     titleComboBox.getSelectedItem().toString(),
                                                     emailTextField.getText(),
                                                     phoneTextField.getText(),
-                                                    eventTSTextField.getText()
+                                                    eventTSTextField.getText(),
+                                                    createdByIdComboBox.getSelectedItem().toString(),
+                                                    lastModifiedDateTextField.getText(),
+                                                    lastModifiedByIdlComboBox.getSelectedItem().toString()
 
                     ));
                     break;
