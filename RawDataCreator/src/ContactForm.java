@@ -73,6 +73,13 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
         ownerIdTextField.setBounds(100, 30, 90, 22);
         ownerIdLabel.setBounds(30, 30, 70, 22);
 
+        try {
+            ownerIdTextField = new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\employees.txt"));
+            ownerIdTextField.setSelectedIndex(-1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         ownerIdTextField.setBounds(150, 60, 190, 22);
         ownerIdLabel.setBounds(30, 60, 90, 22);
 
