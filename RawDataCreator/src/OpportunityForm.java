@@ -59,6 +59,15 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
     private JTextField resultText = null;
     private JLabel resultLabel = null;
 
+    private JTextField createdByIdText = null;
+    private JLabel createdByIdLabel = null;
+
+    private JTextField lastModifiedDateText = null;
+    private JLabel lastModifiedDateLabel = null;
+
+    private JTextField lastModifiedByIdText = null;
+    private JLabel lastModifiedByIdLabel = null;
+
     private JCheckBox isClosed = null;
     private JCheckBox isWon = null;
 
@@ -100,18 +109,12 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
             String label = o.getText();
             System.out.println("Button " + label + " pressed");
 
-//            boolean oppExists = false;
-//            for(Opportunity opp : createdOpportunities) {
-//                if (opp.getName() == nameText.getText()) oppExists = true;
-//            }
-//
-
             switch(label){
                 case "Clean Form":
                     ownerId.setSelectedIndex(-1);
                     accountId.setSelectedIndex(-1);
                     leadSource.setSelectedIndex(-1);
-                    eventTsText.setText("2011-07-11 11:00:00.000 +0:00");
+                    eventTsText.setText("2011-07-11 11:00:00.000");
                     ECDText.setText("2011-07-11");
                     nameText.setText("");
                     amountText.setText("1000");
@@ -122,6 +125,9 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
                     resultText.setText("");
                     isClosed.setSelected(false);
                     isWon.setSelected(false);
+                    createdByIdText.setText("");
+                    lastModifiedByIdText.setText("");
+                    lastModifiedDateText.setText("");
                     break;
                 case "Create":
                    createdOpportunities.add(new Opportunity(ownerId.getSelectedItem().toString(),
@@ -135,23 +141,29 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
                                                             stageNameText.getText(),
                                                             stageDescrText.getText(),
                                                             isClosed.isSelected(),
-                                                            isWon.isSelected()
+                                                            isWon.isSelected(),
+                                                            createdByIdText.getText(),
+                                                            lastModifiedDateText.getText(),
+                                                            lastModifiedByIdText.getText()
                                              ));
                     oppsCounter++;
-                    ownerId.setSelectedIndex(-1);
-                    accountId.setSelectedIndex(-1);
-                    leadSource.setSelectedIndex(-1);
-                    eventTsText.setText("2011-07-11 11:00:00.000 +0:00");
-                    ECDText.setText("2011-07-11");
-                    nameText.setText("");
-                    amountText.setText("1000");
-                    descriptionText.setText("");
-                    stageNameText.setText("");
-                    stageDescrText.setText("");
-                    statusText.setText("");
-                    resultText.setText("");
-                    isClosed.setSelected(false);
-                    isWon.setSelected(false);
+//                    ownerId.setSelectedIndex(-1);
+//                    accountId.setSelectedIndex(-1);
+//                    leadSource.setSelectedIndex(-1);
+//                    eventTsText.setText("2011-07-11 11:00:00.000");
+//                    ECDText.setText("2011-07-11");
+//                    nameText.setText("");
+//                    amountText.setText("1000");
+//                    descriptionText.setText("");
+//                    stageNameText.setText("");
+//                    stageDescrText.setText("");
+//                    //statusText.setText("");
+//                    //resultText.setText("");
+//                    createdByIdText.setText("");
+//                    lastModifiedByIdText.setText("");
+//                    lastModifiedDateText.setText("");
+//                    isClosed.setSelected(false);
+//                    isWon.setSelected(false);
                     System.out.println("Total opportunities created: " + createdOpportunities.size());
                     break;
                 case "Generate SQL":
@@ -167,7 +179,7 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
                 BoxLayout.Y_AXIS));
         add(Box.createRigidArea(new Dimension(0, 35)));
 
-        eventTsText  = new JTextField("2011-07-11 11:00:00.000 +0:00");
+        eventTsText  = new JTextField("2011-07-11 11:00:00.000");
         eventTsLabel = new JLabel();
 
         try {
@@ -219,6 +231,15 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
         resultText = new JTextField("");
         resultLabel = new JLabel();
 
+        createdByIdText = new JTextField("");
+        createdByIdLabel = new JLabel();
+
+        lastModifiedByIdText = new JTextField("");
+        lastModifiedByIdLabel = new JLabel();
+
+        lastModifiedDateText = new JTextField("");
+        lastModifiedDateLabel = new JLabel();
+
         isClosed = new JCheckBox("IsClosed");
         isWon = new JCheckBox("IsWon");
 
@@ -266,20 +287,32 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
         stageDescrLabel.setBounds(30, 290, 80, 30);
         stageDescrLabel.setText("Stage Description");
 
-        statusText.setBounds(210, 320, 150, 30);
-        statusLabel.setBounds(30, 320, 80, 30);
-        statusLabel.setText("Status");
+        //statusText.setBounds(210, 320, 150, 30);
+        //statusLabel.setBounds(30, 320, 80, 30);
+        //statusLabel.setText("Status");
 
-        resultText.setBounds(210, 350, 150, 30);
-        resultLabel.setBounds(30, 350, 80, 30);
-        resultLabel.setText("Result");
+        //resultText.setBounds(210, 350, 150, 30);
+        //resultLabel.setBounds(30, 350, 80, 30);
+        //resultLabel.setText("Result");
 
-        isClosed.setBounds(30, 380, 90, 30);
-        isWon.setBounds(210, 380, 90, 30);
+        createdByIdText.setBounds(210, 380, 150, 30);
+        createdByIdLabel.setBounds(30, 380, 80, 30);
+        createdByIdLabel.setText("CreatedById");
 
-        createButton.setBounds(20, 420, 90, 30);
-        cleanFormButton.setBounds(125, 420, 120, 30);
-        generateSQLButton.setBounds(260, 420, 120, 30);
+        lastModifiedDateText.setBounds(210, 410, 150, 30);
+        lastModifiedDateLabel.setBounds(30, 410, 100, 30);
+        lastModifiedDateLabel.setText("LastModifiedDate");
+
+        lastModifiedByIdText.setBounds(210, 440, 150, 30);
+        lastModifiedByIdLabel.setBounds(30, 440, 100, 30);
+        lastModifiedByIdLabel.setText("LastModifiedByID");
+
+        isClosed.setBounds(30, 470, 90, 30);
+        isWon.setBounds(210, 470, 90, 30);
+
+        createButton.setBounds(20, 500, 90, 30);
+        cleanFormButton.setBounds(125, 500, 120, 30);
+        generateSQLButton.setBounds(260, 500, 120, 30);
 
         setLayout(null);
 
@@ -313,11 +346,20 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
         add(stageDescrText);
         add(stageDescrLabel);
 
-        add(statusText);
-        add(statusLabel);
+        //add(statusText);
+        //add(statusLabel);
 
-        add(resultText);
-        add(resultLabel);
+        //add(resultText);
+        //add(resultLabel);
+
+        add(createdByIdText);
+        add(createdByIdLabel);
+
+        add(lastModifiedByIdText);
+        add(lastModifiedByIdLabel);
+
+        add(lastModifiedDateText);
+        add(lastModifiedDateLabel);
 
         add(isClosed);
         add(isWon);
@@ -326,7 +368,7 @@ public class OpportunityForm extends JDialog implements ActionListener, ItemList
         add(cleanFormButton);
         add(generateSQLButton);
 
-        setSize(420, 510);
+        setSize(540, 570);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);

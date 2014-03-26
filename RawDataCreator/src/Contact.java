@@ -7,33 +7,47 @@ import java.util.List;
 
 public class Contact extends InsideSalesObject {
 
-    private String  accountId = "",
-                    createdDate = "",
-                    contactFirstName = "",
-                    contactLastName = "",
-                    contactName = "",
-                    contactTitle = "",
-                    contactRole = "",
-                    contactEmail = "",
-                    contactPhone = "",
-                    eventTs = "";
+    private String  ownerId = "";
+    private String accountId = "";
+    private String createdDate = "";
+    private String contactFirstName = "";
+    private String contactLastName = "";
+    private String contactName = "";
+    private String contactTitle = "";
+    private String contactEmail = "";
+    private String contactPhone = "";
+    private String eventTs = "";
+
+
+
+    private String createdById ="";
+    private String lastModifiedDate = "";
+    private String lastModifiedById = "";
     private int contactObjectId = 0;
 
 
 
-    public Contact(String accountId, String createdDate, String contactFirstName, String contactLastName, String contactTitle, String contactRole, String contactEmail, String contactPhone, String eventTs) {
+    public Contact(String ownerId, String accountId, String createdDate, String contactFirstName, String contactLastName, String contactTitle, String contactEmail, String contactPhone, String eventTs, String createdById, String lastModifiedDate, String lastModifiedById) {
+        this.ownerId   = ownerId;
         this.accountId   = accountId;
         this.createdDate = createdDate;
         this.contactFirstName = contactFirstName;
         this.contactLastName  = contactLastName;
         this.contactName  = contactFirstName + " " + contactLastName;
         this.contactTitle = contactTitle;
-        this.contactRole  = contactRole;
         this.contactEmail = contactEmail;
         this.contactPhone = contactPhone;
         this.eventTs = eventTs;
+        this.createdById = createdById;
+        this.lastModifiedDate = lastModifiedDate;
+        this.lastModifiedById = lastModifiedById;
         this.contactObjectId = objectId;
-        objectId+=10;
+
+        //objectId+=10;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
     }
 
     public String getAccountId() {
@@ -56,10 +70,6 @@ public class Contact extends InsideSalesObject {
         return contactTitle;
     }
 
-    public String getContactRole() {
-        return contactRole;
-    }
-
     public String getContactEmail() {
         return contactEmail;
     }
@@ -74,6 +84,18 @@ public class Contact extends InsideSalesObject {
 
     public String getEventTs() {
         return eventTs;
+    }
+
+    public String getCreatedById() {
+        return createdById;
+    }
+
+    public String getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public String getLastModifiedById() {
+        return lastModifiedById;
     }
 
     public int getObjectId() {

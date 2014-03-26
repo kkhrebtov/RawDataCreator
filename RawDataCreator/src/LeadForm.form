@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="LeadForm">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="17" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="20" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="610" height="511"/>
+      <xy x="20" y="20" width="610" height="575"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -777,7 +777,7 @@
       </component>
       <component id="6e1fd" class="javax.swing.JButton" binding="cleanFormButton" default-binding="true">
         <constraints>
-          <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="17" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="CleanForm"/>
@@ -785,7 +785,7 @@
       </component>
       <component id="4b0c" class="javax.swing.JButton" binding="createButton" default-binding="true">
         <constraints>
-          <grid row="15" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="18" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Create"/>
@@ -793,7 +793,7 @@
       </component>
       <component id="5e530" class="javax.swing.JButton" binding="generateSQLButton" default-binding="true">
         <constraints>
-          <grid row="16" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="19" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Generate SQL"/>
@@ -893,7 +893,7 @@
       </component>
       <component id="a76ba" class="javax.swing.JCheckBox" binding="isConvertedCheckBox" default-binding="true">
         <constraints>
-          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="16" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Is Converted?"/>
@@ -981,6 +981,94 @@
         </constraints>
         <properties/>
       </component>
+      <component id="9a82" class="javax.swing.JLabel" binding="createdByIdLabel">
+        <constraints>
+          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="bfd2b"/>
+          <text value="CreatedById"/>
+        </properties>
+      </component>
+      <component id="bfd2b" class="javax.swing.JComboBox" binding="createdByIdComboBox" default-binding="true">
+        <constraints>
+          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="employee_0"/>
+            <item value="employee_1"/>
+            <item value="employee_2"/>
+            <item value="employee_3"/>
+            <item value="employee_4"/>
+            <item value="employee_5"/>
+            <item value="employee_6"/>
+            <item value="employee_7"/>
+            <item value="employee_8"/>
+            <item value="employee_9"/>
+            <item value="employee_10"/>
+            <item value="employee_11"/>
+            <item value="employee_12"/>
+            <item value="employee_13"/>
+            <item value="employee_14"/>
+            <item value="employee_15"/>
+            <item value="employee_16"/>
+            <item value="employee_17"/>
+            <item value="employee_18"/>
+            <item value="employee_19"/>
+            <item value="employee_20"/>
+            <item value="employee_21"/>
+            <item value="employee_22"/>
+            <item value="employee_23"/>
+            <item value="employee_24"/>
+            <item value="employee_25"/>
+            <item value="employee_26"/>
+            <item value="employee_27"/>
+            <item value="employee_28"/>
+            <item value="employee_29"/>
+            <item value="employee_30"/>
+          </model>
+        </properties>
+      </component>
+      <component id="5ba55" class="javax.swing.JTextField" binding="lastModifiedDateTextField" default-binding="true">
+        <constraints>
+          <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="b11e9" class="javax.swing.JLabel" binding="lastModifiedDateLabel">
+        <constraints>
+          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="5ba55"/>
+          <text value="LastModifiedDate"/>
+        </properties>
+      </component>
+      <component id="82e0f" class="javax.swing.JTextField" binding="lastModifiedByIdTextField" default-binding="true">
+        <constraints>
+          <grid row="15" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="14e50" class="javax.swing.JLabel" binding="lastModifiedByIdLabel">
+        <constraints>
+          <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="82e0f"/>
+          <text value="LastModifiedById"/>
+        </properties>
+      </component>
     </children>
   </grid>
+  <inspectionSuppressions>
+    <suppress inspection="NoLabelFor"/>
+  </inspectionSuppressions>
 </form>

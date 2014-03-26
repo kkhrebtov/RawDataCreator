@@ -52,6 +52,12 @@ public class LeadForm extends JDialog implements ActionListener, ItemListener {
     private JLabel eventTSLabel;
     private JTextField lastNameTextField;
     private JLabel lastNameLabel;
+    private JComboBox createdByIdComboBox;
+    private JTextField lastModifiedDateTextField;
+    private JTextField lastModifiedByIdTextField;
+    private JLabel lastModifiedByIdLabel;
+    private JLabel lastModifiedDateLabel;
+    private JLabel createdByIdLabel;
 
 
     public LeadForm() {
@@ -89,13 +95,16 @@ public class LeadForm extends JDialog implements ActionListener, ItemListener {
                     emailText.setText("");
                     phoneTextField.setText("");
                     statusLabel.setText("");
-                    eventTSTextField.setText("2011-07-11 11:00:00.000 +0:00");
+                    eventTSTextField.setText("2011-07-11 11:00:00.000");
                     isConvertedCheckBox.setSelected(false);
+                    createdByIdComboBox.setSelectedIndex(-1);
+                    lastModifiedByIdTextField.setText("");
+                    lastModifiedDateTextField.setText("");
                     break;
                 case "Create":
                    createdLeads.add(new Lead(ownerIdComboBox.getSelectedItem().toString(),
-                                             convertedAccountIdLabel.getText(),
-                                             convertedContactIdLabel.getText(),
+                                             convertedAccountIdTextField.getText(),
+                                             convertedContactIdTextField.getText(),
                                              convertedOpportunityIdTextField.getText(),
                                              convertedDateTextField.getText(),
                                              createdDateTextField.getText(),
@@ -107,7 +116,10 @@ public class LeadForm extends JDialog implements ActionListener, ItemListener {
                                              phoneTextField.getText(),
                                              statusComboBox.getSelectedItem().toString(),
                                              eventTSTextField.getText(),
-                                             isConvertedCheckBox.isSelected()
+                                             isConvertedCheckBox.isSelected(),
+                                             createdByIdComboBox.getSelectedItem().toString(),
+                                             lastModifiedDateTextField.getText(),
+                                             lastModifiedByIdTextField.getText()
                    ));
 
                    break;
@@ -149,11 +161,11 @@ public class LeadForm extends JDialog implements ActionListener, ItemListener {
                 BoxLayout.Y_AXIS));
         add(Box.createRigidArea(new Dimension(0, 35)));
 
-        setSize(420, 490);
+        setSize(420, 610);
         setLayout(null);
 
         try {
-            ownerIdComboBox = new JComboBox(tools.readLines("D:\\DataGenerator\\DataGenerator\\resources\\employees.txt"));
+            ownerIdComboBox = new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\employees.txt"));
             ownerIdComboBox.setSelectedIndex(-1);
         } catch (IOException e) {
             e.printStackTrace();
@@ -175,6 +187,13 @@ public class LeadForm extends JDialog implements ActionListener, ItemListener {
 
         createdDateTextField.setBounds(210, 150, 190, 22);
         createdDateLabel.setBounds(30, 150, 190, 22);
+
+        try {
+            companyNameComboBox = new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\accounts.txt"));
+            companyNameComboBox.setSelectedIndex(-1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         companyNameComboBox.setBounds(210, 180, 190, 22);
         companyNameLabel.setBounds(30, 180, 150, 22);
@@ -213,9 +232,25 @@ public class LeadForm extends JDialog implements ActionListener, ItemListener {
 
         isConvertedCheckBox.setBounds(30, 390, 190, 22);
 
-        createButton.setBounds(20, 420, 90, 30);
-        cleanFormButton.setBounds(125, 420, 120, 30);
-        generateSQLButton.setBounds(260, 420, 120, 30);
+        try {
+            createdByIdComboBox = new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\employees.txt"));
+            createdByIdComboBox.setSelectedIndex(-1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        createdByIdComboBox.setBounds(210, 420, 190, 22);
+        createdByIdLabel.setBounds(30, 420, 150, 22);
+
+        lastModifiedDateTextField.setBounds(210, 450, 190, 22);
+        lastModifiedDateLabel.setBounds(30, 450, 150, 22);
+
+        lastModifiedByIdTextField.setBounds(210, 480, 190, 22);
+        lastModifiedByIdLabel.setBounds(30, 480, 150, 22);
+
+        createButton.setBounds(20, 510, 90, 30);
+        cleanFormButton.setBounds(125, 510, 120, 30);
+        generateSQLButton.setBounds(260, 510, 120, 30);
 
         add(ownerIdComboBox);
         add(ownerIdLabel);
@@ -253,6 +288,15 @@ public class LeadForm extends JDialog implements ActionListener, ItemListener {
 
         add(statusComboBox);
         add(statusLabel);
+
+        add(createdByIdComboBox);
+        add(createdByIdLabel);
+
+        add(lastModifiedDateTextField);
+        add(lastModifiedDateLabel);
+
+        add(lastModifiedByIdTextField);
+        add(lastModifiedByIdLabel);
 
         add(createButton);
         add(cleanFormButton);

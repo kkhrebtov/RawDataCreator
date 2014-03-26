@@ -15,7 +15,6 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
     ArrayList<Contact> createdContacts = new ArrayList();
 
     private JTextField firstNameTextField;
-    private JComboBox roleComboBox;
     private JComboBox titleComboBox;
     private JTextField emailTextField;
     private JTextField phoneTextField;
@@ -23,7 +22,7 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
     private JButton generateSQLButton;
     private JButton cleanFormButton;
     private JLabel firstNameLabel;
-    private JLabel roleLabel;
+    private JLabel ownerIdLabel;
     private JLabel titleLabel;
     private JLabel emailLabel;
     private JLabel phoneLabel;
@@ -35,6 +34,13 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
     private JLabel accountIDLabel;
     private JTextField eventTSTextField;
     private JLabel eventTSLabel;
+    private JComboBox ownerIdTextField;
+    private JComboBox createdByIdComboBox;
+    private JTextField lastModifiedDateTextField;
+    private JLabel createdByIdLabel;
+    private JComboBox lastModifiedByIdlComboBox;
+    private JLabel lastModifiedDateLabel;
+    private JLabel lastModifiedByIdlLabel;
 
     public ContactForm() {
 
@@ -64,14 +70,11 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
         lastNameTextField.setBounds(270, 30, 90, 22);
         lastNameLabel.setBounds(200, 30, 70, 22);
 
-        try {
-            roleComboBox = new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\titles.txt"));
-            roleComboBox.setSelectedIndex(-1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        roleComboBox.setBounds(150, 60, 190, 22);
-        roleLabel.setBounds(30, 60, 90, 22);
+        ownerIdTextField.setBounds(100, 30, 90, 22);
+        ownerIdLabel.setBounds(30, 30, 70, 22);
+
+        ownerIdTextField.setBounds(150, 60, 190, 22);
+        ownerIdLabel.setBounds(30, 60, 90, 22);
 
         try {
             titleComboBox = new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\titles.txt"));
@@ -100,16 +103,39 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
         eventTSLabel.setBounds(30, 240, 190, 22);
         eventTSTextField.setText("2011-07-11 11:00:00.000");
 
-        createButton.setBounds(20, 270, 90, 30);
-        cleanFormButton.setBounds(125, 270, 120, 30);
-        generateSQLButton.setBounds(260, 270, 120, 30);
+
+        try {
+            createdByIdComboBox= new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\employees.txt"));
+            titleComboBox.setSelectedIndex(-1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        createdByIdComboBox.setBounds(150, 270, 190, 22);
+        createdByIdLabel.setBounds(30, 270, 90, 22);
+
+        lastModifiedDateTextField.setBounds(150, 300, 190, 22);
+        lastModifiedDateLabel.setBounds(30, 300, 100, 22);
+
+        try {
+            lastModifiedByIdlComboBox= new JComboBox(tools.readLines("D:\\RawDataCreator\\RawDataCreator\\resources\\employees.txt"));
+            lastModifiedByIdlComboBox.setSelectedIndex(-1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        lastModifiedByIdlComboBox.setBounds(150, 330, 190, 22);
+        lastModifiedByIdlLabel.setBounds(30, 330, 90, 22);
+
+        createButton.setBounds(20, 360, 90, 30);
+        cleanFormButton.setBounds(125, 360, 120, 30);
+        generateSQLButton.setBounds(260, 360, 120, 30);
 
         add(firstNameTextField);
         add(firstNameLabel);
         add(lastNameLabel);
         add(lastNameTextField);
-        add(roleComboBox);
-        add(roleLabel);
+        add(ownerIdTextField);
+        add(ownerIdLabel);
         add(titleComboBox);
         add(titleLabel);
         add(emailTextField);
@@ -122,6 +148,12 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
         add(accountIDTextField);
         add(eventTSLabel);
         add(eventTSTextField);
+        add(createdByIdComboBox);
+        add(createdByIdLabel);
+        add(lastModifiedDateLabel);
+        add(lastModifiedDateTextField);
+        add(lastModifiedByIdlComboBox);
+        add(lastModifiedByIdlLabel);
 
         add(cleanFormButton);
         add(createButton);
@@ -131,6 +163,10 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
         setLocationRelativeTo(null);
         setVisible(true);
 
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 
     class ButtonListener implements ActionListener {
@@ -146,19 +182,19 @@ public class ContactForm extends JDialog implements ActionListener, ItemListener
                     firstNameTextField.setText("");
                     lastNameTextField.setText("");
                     titleComboBox.setSelectedIndex(-1);
-                    roleComboBox.setSelectedIndex(-1);
+                    ownerIdTextField.setText("");
                     emailTextField.setText("");
                     phoneTextField.setText("");
                     accountIDTextField.setText("");
                     eventTSTextField.setText("2011-07-11 11:00:00.000");
                     break;
                 case "Create":
-                    createdContacts.add(new Contact(accountIDTextField.getText(),
+                    createdContacts.add(new Contact(ownerIdTextField.getText(),
+                                                    accountIDTextField.getText(),
                                                     dateOfCreationTextField.getText(),
                                                     firstNameTextField.getText(),
                                                     lastNameTextField.getText(),
                                                     titleComboBox.getSelectedItem().toString(),
-                                                    roleComboBox.getSelectedItem().toString(),
                                                     emailTextField.getText(),
                                                     phoneTextField.getText(),
                                                     eventTSTextField.getText()

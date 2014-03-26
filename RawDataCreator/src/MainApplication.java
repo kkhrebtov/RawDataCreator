@@ -77,6 +77,11 @@ public class MainApplication extends JDialog implements ActionListener, ItemList
                     System.out.println("Contact Selected");
                     ContactForm contactForm = new ContactForm();
                     break;
+
+                case "Account":
+                    System.out.println("Contact Selected");
+                    AccountForm accountForm = new AccountForm();
+                    break;
             }
         }
 
