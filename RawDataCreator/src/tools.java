@@ -405,18 +405,18 @@ public class tools extends InsideSalesObject {
                             "("+snapshotId+",'"+createdContacts.get(indexOfUpdatedContact).getObjectId()+"', "+createdContacts.get(i).getEventTs()+"')\n";
 
                     SQLexpression2 = "INSERT INTO SFDC_SNAPSHOT_DATA (snapshot_id, object_id, attr_name, attr_value) VALUES\n" +
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'OwnerID',       '" +createdContacts.get(i).getOwnerId()+                "', '"+createdContacts.get(indexOfUpdatedContact).getOwnerId()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'AccountID',     '" +createdContacts.get(i).getAccountId()+            "', '"+createdContacts.get(indexOfUpdatedContact).getAccountId()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'CreatedDate',   '" +createdContacts.get(i).getCreatedDate()+          "', '"+createdContacts.get(indexOfUpdatedContact).getCreatedDate()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Email',         '" +createdContacts.get(i).getContactEmail()+        "', '"+createdContacts.get(indexOfUpdatedContact).getContactEmail()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'FirstName',     '" +createdContacts.get(i).getContactFirstName()+     "', '"+createdContacts.get(indexOfUpdatedContact).getContactFirstName()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'LastName',      '" +createdContacts.get(i).getContactLastName()+      "', '"+createdContacts.get(indexOfUpdatedContact).getContactLastName()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Name',          '" +createdContacts.get(i).getContactName()+         "', '"+createdContacts.get(indexOfUpdatedContact).getContactName()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Title',         '" +createdContacts.get(i).getContactTitle()+        "', '"+createdContacts.get(indexOfUpdatedContact).getContactTitle()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Phone',         '" +createdContacts.get(i).getContactPhone()+        "', '"+createdContacts.get(indexOfUpdatedContact).getContactPhone()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'CreatedById',   '" +createdContacts.get(i).getCreatedById()+          "', '"+createdContacts.get(indexOfUpdatedContact).getCreatedById()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'LastModifiedDate', '" +createdContacts.get(i).getLastModifiedDate()+ "', '"+createdContacts.get(indexOfUpdatedContact).getLastModifiedDate()+"'),\n"+
-                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'LastModifiedById', '" +createdContacts.get(i).getLastModifiedById()+ "', '"+createdContacts.get(indexOfUpdatedContact).getLastModifiedById()+"')\n";
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'OwnerID',       '" +createdContacts.get(i).getOwnerId()+              "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'AccountID',     '" +createdContacts.get(i).getAccountId()+            "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'CreatedDate',   '" +createdContacts.get(i).getCreatedDate()+          "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Email',         '" +createdContacts.get(i).getContactEmail()+        "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'FirstName',     '" +createdContacts.get(i).getContactFirstName()+     "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'LastName',      '" +createdContacts.get(i).getContactLastName()+      "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Name',          '" +createdContacts.get(i).getContactName()+         "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Title',         '" +createdContacts.get(i).getContactTitle()+        "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'Phone',         '" +createdContacts.get(i).getContactPhone()+        "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'CreatedById',   '" +createdContacts.get(i).getCreatedById()+          "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'LastModifiedDate', '" +createdContacts.get(i).getLastModifiedDate()+ "'),\n"+
+                           "("+snapshotId+", '"+createdContacts.get(i).getObjectId()+"', 'LastModifiedById', '" +createdContacts.get(i).getLastModifiedById()+ "')\n";
 
 
                     SQLexpression3 = "INSERT INTO SFDC_SNAPSHOT_DATA_OLD(snapshot_id, object_id, attr_name, attr_old_value) VALUES \n";
@@ -428,7 +428,7 @@ public class tools extends InsideSalesObject {
                         SQLexpression3+="\t\t("+snapshotId+", '"+createdContacts.get(indexOfUpdatedContact).getObjectId()+"', 'AccountID', '"+createdContacts.get(indexOfUpdatedContact).getAccountId()+"'),\n";
                     }
                     if(!createdContacts.get(i).getCreatedDate().equals(createdContacts.get(indexOfUpdatedContact).getCreatedDate())) {
-                        SQLexpression3+="\t\t("+snapshotId+", '"+createdContacts.get(indexOfUpdatedContact).getObjectId()+"', 'CreatedDat', '"+createdContacts.get(indexOfUpdatedContact).getCreatedDate()+"'),\n";
+                        SQLexpression3+="\t\t("+snapshotId+", '"+createdContacts.get(indexOfUpdatedContact).getObjectId()+"', 'CreatedDate', '"+createdContacts.get(indexOfUpdatedContact).getCreatedDate()+"'),\n";
                     }
                     if(!createdContacts.get(i).getContactEmail().equals(createdContacts.get(indexOfUpdatedContact).getContactEmail())) {
                         SQLexpression3+="\t\t("+snapshotId+", '"+createdContacts.get(indexOfUpdatedContact).getObjectId()+"', 'Email', '"+createdContacts.get(indexOfUpdatedContact).getContactEmail()+"'),\n";
@@ -543,8 +543,8 @@ public class tools extends InsideSalesObject {
 
 
                     SQLexpression2 = "INSERT INTO SFDC_SNAPSHOT_DATA (snapshot_id, object_id, attribute_name, value, old_value) VALUES\n" +
-                            "("+snapshotId+", '"+createdAccounts.get(i).getAccountObjectId()+"', 'Name',           '" +createdAccounts.get(i).getAccountName()+"', NULL),\n"+
-                            "("+snapshotId+", '"+createdAccounts.get(i).getAccountObjectId()+"', 'Description',    '" +createdAccounts.get(i).getAccountDescription()+"', NULL),\n"+
+                            "("+snapshotId+", '"+createdAccounts.get(i).getAccountObjectId()+"', 'Name',          '" +createdAccounts.get(i).getAccountName()+"', NULL),\n"+
+                            "("+snapshotId+", '"+createdAccounts.get(i).getAccountObjectId()+"', 'Description',   '" +createdAccounts.get(i).getAccountDescription()+"', NULL),\n"+
                             "("+snapshotId+", '"+createdAccounts.get(i).getAccountObjectId()+"', 'CreatedDate',   '" +createdAccounts.get(i).getCreatedDate()+"', NULL),\n"+
                             "("+snapshotId+", '"+createdAccounts.get(i).getAccountObjectId()+"', 'AccountNumber', '" +createdAccounts.get(i).getAccountNumber()+"', NULL),\n"+
                             "("+snapshotId+", '"+createdAccounts.get(i).getAccountObjectId()+"', 'AccountSource', '" +createdAccounts.get(i).getAccountSource()+"', NULL)\n";
